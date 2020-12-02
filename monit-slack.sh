@@ -2,8 +2,8 @@
 
 URL=$(cat /etc/monit-slack-url)
 
-COLOR=${MONIT_COLOR:-$([[ $MONIT_EVENT == *"Exists"* ]] && echo good || echo danger)}
-ICON=${MONIT_COLOR:-$([[ $MONIT_EVENT == *"Exists"* ]] && echo ✅ || echo ⚠️)}
+COLOR=${MONIT_COLOR:-$([[ $MONIT_EVENT == *"Exists"* || $MONIT_EVENT == *"succeeded"*  ]] && echo good || echo danger)}
+ICON=${MONIT_COLOR:-$([[ $MONIT_EVENT == *"Exists"* || $MONIT_EVENT == *"succeeded"* ]] && echo ✅ || echo ⚠️)}
 TEXT=$(echo -e "$ICON $MONIT_EVENT: $MONIT_DESCRIPTION" | python3 -c "import json,sys;print(json.dumps(sys.stdin.read()))")
 
 PAYLOAD="{
