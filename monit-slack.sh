@@ -9,7 +9,7 @@ TEXT=$(echo -e "$ICON $MONIT_EVENT: $MONIT_DESCRIPTION" | python3 -c "import jso
 PAYLOAD="{
   \"attachments\": [
     {
-      \"text\": $TEXT,
+      \"text\": \"$TEXT\",
       \"color\": \"$COLOR\",
       \"mrkdwn_in\": [\"text\"],
       \"fields\": [
